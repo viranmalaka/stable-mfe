@@ -25,15 +25,14 @@ const nextConfig = {
   webpack(config, options) {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'stableHost',
+        name: 'feedManager',
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
-          './theme': './configs/theme-configs.ts',
+          './base-page': './pages/BasePage.tsx',
+          './nav-config': './config/nav-configs.tsx',
         },
         remotes: getRemote(options.isServer),
-        shared: {
-          './configs/theme-configs.ts': {},
-        },
+        shared: {},
         extraOptions: {
           exposePages: true,
         },
