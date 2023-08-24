@@ -3,9 +3,9 @@ const NextFederationPlugin = require('@module-federation/nextjs-mf');
 const getRemote = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
   return {
-    stableHost: `stableHost@http://localhost:3000/_next/static/${location}/remoteEntry.js`,
-    feedManager: `feedManager@http://localhost:3001/_next/static/${location}/remoteEntry.js`,
-    userAccount: `userAccount@http://localhost:3002/_next/static/${location}/remoteEntry.js`,
+    stableHost: `stableHost@${process.env.STABLE_HOST_URL}/_next/static/${location}/remoteEntry.js`,
+    feedManager: `feedManager@${process.env.FEED_MANAGER_URL}/_next/static/${location}/remoteEntry.js`,
+    userAccount: `userAccount@${process.env.USER_ACCOUNT_URL}/_next/static/${location}/remoteEntry.js`,
   };
 };
 
@@ -31,7 +31,9 @@ const nextConfig = {
         },
         remotes: getRemote(options.isServer),
         shared: {
-          './configs/theme-configs.ts': {},
+          '@mui/material': {
+            singleton: true,
+          },
         },
         extraOptions: {
           exposePages: true,

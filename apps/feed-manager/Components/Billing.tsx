@@ -1,14 +1,11 @@
-import { Button, ThemeProvider } from '@mui/material';
-import theme from 'stableHost/theme';
+import { Button } from '@mui/material';
 
 const Billing = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        This is feed manager billing page.
-        <Button variant="contained">My Button</Button>
-      </div>
-    </ThemeProvider>
+    <div>
+      This is feed manager billing page.
+      <Button variant="contained">My Button</Button>
+    </div>
   );
 };
 
