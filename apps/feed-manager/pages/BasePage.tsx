@@ -6,7 +6,7 @@ type BasePageProps = {
 };
 
 const BasePage = ({ path }: BasePageProps) => {
-  const url = path.join('/');
+  const url = path && path.join('/');
 
   if (url === 'invoices') {
     return <Invoice />;
